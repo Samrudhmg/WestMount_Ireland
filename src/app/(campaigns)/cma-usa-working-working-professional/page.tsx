@@ -1,4 +1,5 @@
 import Counter from '@/components/main/counter';
+import { CoursePromo } from '@/components/main/course-promo';
 import { Faq } from '@/components/main/faq';
 import Footer from '@/components/main/footer';
 import Hero from '@/components/main/hero';
@@ -7,22 +8,21 @@ import Questions from '@/components/main/questions';
 import { StickyFooter } from '@/components/main/sticky-footer';
 import Stories from '@/components/main/stories';
 import { SuccessStories } from '@/components/main/success-stories';
-import CASyllabus from './_componets/ca-syllabus';
-import CareerSectionCaFoundation from './_componets/career-section';
-import { CoursePromoCAFoundation } from './_componets/course-promo';
-import CoursesSectionCaFoundation from './_componets/courses-section';
-import StudySectionCaFoundation from './_componets/study-section';
+import CareerSection from './_components/career-section';
+import CoursesSection from './_components/courses-section';
+import ExamWindowSection from './_components/exam-windows-section';
+import StudySection from './_components/study-section';
 
-export default function CAFoundationPage() {
+export default function WorkingProfessionalPage() {
   const NavItems = [
     { name: 'Home', href: '/' },
     { name: 'Courses', href: 'https://www.tripleica.com/' },
   ];
   const heroProps = {
-    title: 'Ace the CA Foundation Exam Right After Class 12',
-    highlightText: ['Class 12'],
+    title: 'Achieve Leadership Roles in Finance with CMA USA',
+    highlightText: ['CMA USA'],
     highlightColor: '#f15b29',
-    subtitle: 'Start Early with Expert Tuition for 11th, 12th Commerce + CA Foundation Prep in One Place.',
+    subtitle: 'At Triple i CA, learn in-demand skills from seasoned professionals to achieve your dream job.',
     ctaWhatsApp: {
       text: 'WhatsApp Now',
       link: 'https://wa.me/+919745123466',
@@ -62,28 +62,28 @@ export default function CAFoundationPage() {
   const storiesProps = {
     title: '<span class=\'text-iii-accent\'>Inspiring</span> Stories',
     subtitle: 'Watch videos of people sharing their journeys and how our programs helped shape their success.',
-    videoUrl: 'https://www.youtube.com/embed/sxA86Q2PZ_4?list=PLD-eXWo5HonV4McH5vI9QvOETdMocXO73',
+    videoUrl: 'https://www.youtube.com/embed/fgkUe92_8sw?list=PLQkguFimsN4gEDy3_PyqPS1_00O7jrhlE',
   };
 
   const faqProps = {
     faqs: [
       {
-        question: 'Why should students start the CA Foundation course immediately after completing their 10th grade?',
+        question: 'What are the eligibility requirements for the CMA USA certification?',
         answer:
-          'These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.',
+          'To be eligible for the CMA USA certification, you need to have a bachelor\'s degree from an accredited college or university, or a related professional certification. You also need to have two continuous years of professional experience in management accounting or financial management.',
       },
       {
-        question: 'What are the eligibility criteria for CA Foundation after 10th grade?',
+        question: 'How long does it typically take to complete the CMA USA certification?',
         answer:
-          'These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.',
+          'The time to complete the CMA USA certification varies, but most candidates take 12-18 months to finish the program. This includes studying for and passing both exam parts, as well as fulfilling the experience requirement.',
       },
       {
-        question: 'How long does it take to complete the CA Foundation course',
+        question: 'Can I take the CMA USA exams while pursuing my degree?',
         answer:
-          'These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.',
+          'Yes, you can take the CMA USA exams while pursuing your degree. However, you will need to complete your bachelor\'s degree and fulfill the experience requirement before you can be certified.',
       },
       {
-        question: 'What subjects are included in the CA Foundation course?',
+        question: 'How many questions are on each CMA exam, and how are they structured?',
         answer:
           'These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables.',
       },
@@ -110,13 +110,13 @@ export default function CAFoundationPage() {
   };
 
   const cmaUsaCourse = {
-    batchName: '24-25 CA Foundation',
+    batchName: '24-25 CMA USA',
     benefits: [
       {
-        text: 'Lay the Foundation for Success',
+        text: 'Complete the CMA USA certification within one year.',
       },
       {
-        text: 'Get ahead with CA Foundation - save 6 to 12 months by starting now!',
+        text: 'Get a salary package of over 10 lakhs as a fresher.',
       },
     ],
     originalPrice: 15000,
@@ -128,12 +128,11 @@ export default function CAFoundationPage() {
       <Navbar navItems={NavItems} />
       <Hero {...heroProps} />
       <Counter {...counterProps} />
-      <CoursesSectionCaFoundation />
-      <CareerSectionCaFoundation />
-      {/* <ExamWindowSectionCaFoundation /> */}
-      <CASyllabus />
-      <StudySectionCaFoundation />
-      <CoursePromoCAFoundation {...cmaUsaCourse} />
+      <CoursesSection />
+      <CareerSection />
+      <ExamWindowSection />
+      <StudySection />
+      <CoursePromo {...cmaUsaCourse} />
       <SuccessStories />
       <Stories {...storiesProps} />
       <Faq {...faqProps} />
