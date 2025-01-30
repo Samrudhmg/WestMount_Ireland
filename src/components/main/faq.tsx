@@ -25,7 +25,7 @@ export function Faq({ faqs }: Readonly<FAQProps>) {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                <AccordionTrigger className="text-left text-xl">{faq.question}</AccordionTrigger>
                 <AccordionContent>
                   <ReactMarkdown className="prose max-w-none">{faq.answer}</ReactMarkdown>
                 </AccordionContent>
