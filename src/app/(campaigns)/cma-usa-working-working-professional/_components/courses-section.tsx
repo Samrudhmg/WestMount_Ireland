@@ -11,30 +11,30 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    icon: <img src="/icons/bx-ico1.svg" alt="book" />,
+    icon: <img src="/icons/bx-ico1.svg" alt="book" title="Workbook" />,
     title: 'Triple i Workbook',
     description:
         'Packed with easy-to-understand practice questions from ICAI, this workbook is your ultimate toolkit to master every topic effortlessly.',
   },
   {
-    icon: <img src="/icons/bx-ico2.svg" alt="book" />,
+    icon: <img src="/icons/bx-ico2.svg" alt="assistance" title="Assistance" />,
     title: 'Strategic Revision Assistance',
     description: 'Stay exam-ready with focused, timed revision sessions that make learning faster and smarter.',
   },
   {
-    icon: <img src="/icons/bx-ico3.svg" alt="book" />,
+    icon: <img src="/icons/bx-ico3.svg" alt="Resources" title="Resources" />,
     title: 'Expert Resources',
     description:
         'A professional qualification for those aspiring to excel in management accounting, financial analysis, and strategic decision-making.',
   },
   {
-    icon: <img src="/icons/bx-ico4.svg" alt="book" />,
+    icon: <img src="/icons/bx-ico4.svg" alt="Mentorship" title="Mentorship" />,
     title: 'Dedicated Mentorship',
     description:
         'Get one-on-one guidance from expert mentors who\'ll walk with you every step of the way to build your confidence.',
   },
   {
-    icon: <img src="/icons/bx-ico5.svg" alt="book" />,
+    icon: <img src="/icons/bx-ico5.svg" alt="Concept" title="Concept" />,
     title: 'Concept Clarity',
     description:
         'Learn from materials crafted by our top researchers, ensuring you stay ahead with the latest and most effective learning tools.',
@@ -48,19 +48,19 @@ const images = [
   },
   {
     src: '/images/slider-img2.jpg',
-    alt: 'Placeholder image 2',
+    alt: 'Dedicated Mentorship',
   },
   {
     src: '/images/slider-img3.jpg',
-    alt: 'Placeholder image 3',
+    alt: 'study environment',
   },
   {
     src: '/images/slider-img4.jpg',
-    alt: 'Placeholder image 4',
+    alt: 'success stories',
   },
   {
     src: '/images/slider-img5.jpg',
-    alt: 'Placeholder image 5',
+    alt: 'study environment',
   },
 ];
 export default function CoursesSection() {

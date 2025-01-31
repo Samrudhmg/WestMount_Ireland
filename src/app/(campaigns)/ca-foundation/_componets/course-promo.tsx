@@ -37,6 +37,7 @@ function Price({ originalPrice, discountedPrice }: Readonly<PriceProps>) {
           <img
             src="/icons/line.svg"
             alt="line"
+            title="discount amount"
             className="absolute left-0 top-[55%] w-full opacity-70"
             aria-hidden="true"
           />
@@ -75,7 +76,7 @@ export function CoursePromoCAFoundation({ batchName, benefits, originalPrice, di
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <span className="text-[#DC4216]">
-                    <img src="/icons/star.svg" className="w-6" alt="star" />
+                    <img src="/icons/star.svg" title="star" className="w-6" alt="star" />
                   </span>
                   <p className="flex-1 font-inter font-medium text-gray-100">{benefit.text}</p>
                 </div>

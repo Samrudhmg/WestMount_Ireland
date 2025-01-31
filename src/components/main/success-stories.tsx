@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
+import Image from 'next/image';
 
 import { useState } from 'react';
 
@@ -58,11 +59,7 @@ export function SuccessStories() {
 
           <div className="flex flex-col gap-8 md:flex-row">
             <div className="relative aspect-square w-full overflow-hidden rounded-3xl md:w-1/2 md:rounded-2xl">
-              <img
-                src={story.image}
-                alt={story.name}
-                className="size-full object-cover transition-opacity duration-300 ease-in-out"
-              />
+              <Image width={500} height={500} src={story.image} alt={story.name} title={story.name} className="size-full object-cover transition-opacity duration-300 ease-in-out" />
             </div>
             <div className="relative rounded-3xl bg-iii-primary p-8 text-white md:w-1/2 md:rounded-2xl">
               <blockquote className="mb-6 text-lg">

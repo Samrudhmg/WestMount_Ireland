@@ -54,7 +54,7 @@ export default function CareerSection() {
             <Button className="text-md z-10 rounded-xl bg-iii-accent p-6 text-white hover:bg-iii-primary md:p-8">Grab your CMA USA Certificate</Button>
           </ApplyDialogForm>
           <SlideInDiv>
-            <Image src="/images/certificate.png" className="motion-translate-x-in-[0%] motion-translate-y-in-[101%]" alt="CMA USA Certificate" width={1200} height={1200} />
+            <Image src="/images/certificate.png" className="motion-translate-x-in-[0%] motion-translate-y-in-[101%]" title="CMA USA Certificate" alt="CMA USA Certificate" width={1200} height={1200} />
           </SlideInDiv>
         </div>
       </div>

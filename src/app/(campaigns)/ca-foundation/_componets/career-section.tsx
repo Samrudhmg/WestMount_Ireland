@@ -58,7 +58,7 @@ export default function CareerSectionCaFoundation() {
             <Button className="text-md z-10 rounded-xl bg-iii-accent p-6 text-white hover:bg-iii-primary md:p-8">Grab your CA Certificate</Button>
           </ApplyDialogForm>
           <SlideInDiv>
-            <Image src="/images/certificate2.png" className="motion-translate-x-in-[0%] motion-translate-y-in-[101%]" alt="CMA USA Certificate" width={1200} height={1200} />
+            <Image src="/images/certificate2.png" className="motion-translate-x-in-[0%] motion-translate-y-in-[101%]" title="CA Foundation Certificate" alt="CA Foundation Certificate" width={1200} height={1200} />
           </SlideInDiv>
         </div>
       </div>
