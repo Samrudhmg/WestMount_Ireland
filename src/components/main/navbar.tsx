@@ -18,7 +18,7 @@ export default function NavBar({ navItems }: Readonly<NavBarProps>) {
       <div className="mx-auto flex items-center justify-between p-4 md:container lg:w-8/12 lg:justify-evenly lg:px-8">
         <div className="flex lg:flex-1">
           <Link className="flex items-center text-xl font-semibold" href="/">
-            <Image alt="triple i logo" width={100} height={100} src="/icons/triple-i-logo.svg" />
+            <Image alt="triple i logo" title="Triple i Commerce Academy" width={100} height={100} src="/icons/triple-i-logo.svg" />
           </Link>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">

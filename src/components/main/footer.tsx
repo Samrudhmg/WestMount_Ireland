@@ -14,9 +14,9 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: 'triplei_official', followers: '220K followers', url: 'https://www.instagram.com/triplei_official', icon: '/icons/social1.svg' },
-    { name: 'Triple i Commerce Academy', followers: '22.5K followers', url: 'https://www.youtube.com/@TripleiCommerceAcademy', icon: '/icons/social2.svg' },
-    { name: 'Triple i Commerce Academy', followers: '5.6K followers', url: 'https://www.facebook.com/tripleicommerceacademy/', icon: '/icons/social3.svg' },
+    { name: 'triplei_official', followers: '220K followers', url: 'https://www.instagram.com/triplei_official', icon: '/icons/social1.svg', title: 'Instagram' },
+    { name: 'Triple i Commerce Academy', followers: '22.5K followers', url: 'https://www.youtube.com/@TripleiCommerceAcademy', icon: '/icons/social2.svg', title: 'YouTube' },
+    { name: 'Triple i Commerce Academy', followers: '5.6K followers', url: 'https://www.facebook.com/tripleicommerceacademy/', icon: '/icons/social3.svg', title: 'Facebook' },
   ];
 
   const legalLinks = [
@@ -83,7 +83,8 @@ export default function Footer() {
                 <a href="tel:+919020123466" className="flex items-center text-gray-300 hover:text-white">
                   <img
                     src="/icons/call-fill.svg"
-                    alt=""
+                    alt="call"
+                    title="call us"
                     aria-hidden="true"
                     className="mr-2 size-5"
                   />
@@ -92,7 +93,8 @@ export default function Footer() {
                 <a href="mailto:info@tripleica.com" className="flex items-center text-gray-300 hover:text-white">
                   <img
                     src="/icons/mail.svg"
-                    alt=""
+                    alt="mail"
+                    title="mail us"
                     aria-hidden="true"
                     className="mr-2 size-5"
                   />
@@ -118,7 +120,8 @@ export default function Footer() {
                   >
                     <img
                       src={social.icon || '/placeholder.svg'}
-                      alt=""
+                      alt={social.title}
+                      title={social.title}
                       aria-hidden="true"
                       className="mr-2 size-5"
                     />
@@ -127,7 +130,8 @@ export default function Footer() {
                         {social.name}
                         <img
                           src="/icons/external-link.svg"
-                          alt=""
+                          alt="Link"
+                          title="Link"
                           aria-hidden="true"
                           className="ml-1 size-4 transition-opacity"
                         />

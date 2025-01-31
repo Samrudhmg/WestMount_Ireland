@@ -9,6 +9,7 @@ interface CarouselProps {
     src: string
     alt: string
     caption?: string
+    title?: string
   }[]
   autoPlayInterval?: number
   className?: string
@@ -55,9 +56,9 @@ export function CustomCarousel({
           )}
         >
           <div className="relative h-full w-full"> 
-            <img
+            <Image
               src={image.src}
-              alt={image.alt}
+              alt={image.alt} title={image.title} width={1920} height={1080}
               className="h-full w-full rounded-tl-[100px] object-cover object-bottom"
             />
           </div>

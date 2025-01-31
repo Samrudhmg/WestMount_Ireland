@@ -33,19 +33,22 @@ export default function Home() {
     },
     carouselImages: [
       {
-        src: '/slider-1.jpg',
+        src: '/images/slider-1.jpg',
         alt: 'Winners of Triple i',
         caption: 'Learn From India\'s\nNo.1 Academic Experts',
+        title: 'Learn From India No.1 Academic Experts',
       },
       {
-        src: '/slider-2.jpg',
+        src: '/images/slider-2.jpg',
         alt: 'Celebrations at Triple i',
         caption: 'Celebrations\n@ Triple i',
+        title: 'Celebrations at Triple i Commerce Academy',
       },
       {
-        src: '/slider-3.png',
+        src: '/images/slider-3.png',
         alt: 'CMA USA Program',
         caption: 'Winners of\nTriple i',
+        title: 'Winners of Triple i Commerce Academy',
       },
     ],
   };
@@ -93,12 +96,14 @@ export default function Home() {
         text: 'WhatsApp Now',
         link: 'https://wa.me/+919745123466',
         icon: '/icons/whatsapp-fill.svg',
+        alt: 'WhatsApp',
         className: 'bg-[#18CE5D] hover:bg-[#18CE5D]/90 font-medium',
       },
       {
         text: 'Call Us',
         link: 'tel:+919745123466',
         icon: '/icons/call-fill.svg',
+        alt: 'Call',
         className: 'bg-iii-black hover:bg-iii-black/90 font-medium',
       },
     ],

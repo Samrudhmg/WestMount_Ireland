@@ -48,6 +48,7 @@ export default function CASyllabus() {
                   <img
                     src={item.icon || '/placeholder.svg'}
                     alt={`${item.title} icon`}
+                    title={item.title}
                     className="w-6 text-[#E84B1C]"
                   />
                 </div>

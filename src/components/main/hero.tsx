@@ -35,14 +35,6 @@ export default function Hero({
   ctaCall,
   carouselImages,
 }: HeroProps) {
-  // const autoplayOptions = {
-  //   delay: 5000,
-  //   rootNode: (emblaRoot: HTMLElement) => emblaRoot.parentElement,
-  // };
-
-  // const [emblaRef] = useEmblaCarousel({ loop: true }, [AutoPlay(autoplayOptions)]);
-
-  // Replace highlighted text with styled spans
   const renderHighlightedTitle = () => {
     let processedTitle = title;
     highlightText.forEach((text) => {
@@ -65,7 +57,7 @@ export default function Hero({
               <Button asChild className="text-md rounded-xl bg-[#18CE5D] p-6 hover:bg-green-600 ">
                 <a href={ctaWhatsApp.link} className="inline-flex items-center">
                   {ctaWhatsApp.text}
-                  <Image src="/icons/whatsapp-fill.svg" alt="WhatsApp" width={24} height={24} className="ml-2" />
+                  <Image src="/icons/whatsapp-fill.svg" title="WhatsApp" alt="WhatsApp" width={24} height={24} className="ml-2" />
                 </a>
               </Button>
               <Button asChild variant="secondary" className="text-md rounded-xl bg-gray-800 p-6 text-white hover:bg-gray-900">

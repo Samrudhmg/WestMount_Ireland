@@ -49,6 +49,7 @@ export function Carousel({ images, autoPlayInterval = 5000, dotsPosition = { bot
             src={image.src || '/placeholder.svg'}
             alt={image.alt}
             fill
+            title={image.alt}
             className="object-cover"
             priority={index === 0}
           />

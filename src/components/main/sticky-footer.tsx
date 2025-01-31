@@ -27,13 +27,13 @@ export function StickyFooter() {
             href="https://wa.me/919020123466"
             className="flex flex-col items-center justify-center bg-green-500 p-3 text-xs font-medium text-white"
           >
-            <img src="/icons/whatsapp.svg" alt="whatsapp" className="size-6" />
+            <img src="/icons/whatsapp.svg" title="whatsapp" alt="whatsapp" className="size-6" />
             Whatsapp Us
           </Link>
           <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
             <DrawerTrigger asChild>
               <button className="flex w-full flex-col items-center justify-center bg-iii-primary p-3 text-xs font-medium text-white">
-                <img src="/icons/mobile-ico2.svg" alt="pen" className="size-6" />
+                <img src="/icons/mobile-ico2.svg" title="pen" alt="pen" className="size-6" />
                 Apply Now
               </button>
             </DrawerTrigger>
@@ -52,7 +52,7 @@ export function StickyFooter() {
             href="tel:+919020123466"
             className="flex flex-col items-center justify-center bg-[#0088cc] p-3 text-xs font-medium text-white"
           >
-            <img src="/icons/phone.svg" alt="phone" className="size-6" />
+            <img src="/icons/phone.svg" alt="phone" title="phone" className="size-6" />
             Call Us
           </Link>
         </div>
