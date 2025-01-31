@@ -1,0 +1,25 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "eslint.alwaysShowStatus": true,
+    "eslint.debug": false,
+    "eslint.execArgv": null,
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "onFocusChange",
+"eslint.format.enable": true,
+"eslint.codeActionsOnSave.rules": null,
+"terminal.integrated.defaultProfile.windows": "Git Bash",
+"[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+}
+}
