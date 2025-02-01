@@ -45,7 +45,7 @@ export function CustomCarousel({
   }
 
   return (
-    <div className={cn("relative min-h-96 w-full", className)}> 
+    <div className={cn("relative min-h-80 w-full", className)}> 
     <div className="h-full w-full overflow-hidden md:py-40 2xl:py-60"> 
       {images.map((image, index) => (
         <div
@@ -56,11 +56,17 @@ export function CustomCarousel({
           )}
         >
           <div className="relative h-full w-full"> 
-            <Image
-              src={image.src}
-              alt={image.alt} title={image.title} width={1920} height={1080}
-              className="h-full w-full rounded-tl-[100px] object-cover object-bottom"
-            />
+          <Image
+        src={image.src}
+        alt={image.alt}
+        title={image.title}
+        width={1920}
+        height={1080}
+        priority={index === 0}
+        loading={index === 0 ? "eager" : "lazy"}
+        className="h-full w-full rounded-tl-[100px] object-cover object-bottom"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
+      />
           </div>
           {image.caption && (
               <div

@@ -2,8 +2,8 @@
 
 import { Button } from '@/components/ui/button';
 
-import Image from 'next/image';
 import { CustomCarousel } from '../ui/extended/carousel-custom';
+import { ApplyDialogForm } from './apply-dialog-form';
 
 interface HeroProps {
   title: string;
@@ -14,7 +14,7 @@ interface HeroProps {
     text: string;
     link: string;
   };
-  ctaCall: {
+  ctaCall?: {
     text: string;
     link: string;
   };
@@ -32,7 +32,7 @@ export default function Hero({
   highlightColor,
   subtitle,
   ctaWhatsApp,
-  ctaCall,
+  // ctaCall,
   carouselImages,
 }: HeroProps) {
   const renderHighlightedTitle = () => {
@@ -44,25 +44,27 @@ export default function Hero({
   };
 
   return (
-    <div className="rounded-none bg-white py-16 md:rounded-b-[80px]">
-      <div className="container mx-auto px-4">
+    <section className="rounded-none bg-white py-14 md:rounded-b-[80px]">
+      <div className="mx-auto max-w-5xl px-4 2xl:max-w-7xl">
         <div className="flex flex-col-reverse items-center gap-3 md:flex-row">
-          <div className="mb-8 w-full md:mb-0 md:w-1/2 lg:px-10">
+          <div className="mb-8 w-full md:mb-0 md:w-1/2 lg:px-7">
             <h1
-              className="mb-4 text-3xl font-bold lg:text-5xl"
+              className="mb-4 text-3xl font-bold md:text-4xl 2xl:text-5xl"
               dangerouslySetInnerHTML={{ __html: renderHighlightedTitle() }}
             />
-            <h3 className="mb-6 text-xl">{subtitle}</h3>
-            <div className="space-x-4">
-              <Button asChild className="text-md rounded-xl bg-[#18CE5D] p-6 hover:bg-green-600 ">
+            <h3 className="mb-6 text-lg 2xl:text-xl">{subtitle}</h3>
+            <div className="space-x-4 space-y-2">
+              <Button asChild className="2xl:text-md rounded-xl bg-[#18CE5D] p-6 text-sm hover:bg-green-600">
                 <a href={ctaWhatsApp.link} className="inline-flex items-center">
                   {ctaWhatsApp.text}
-                  <Image src="/icons/whatsapp-fill.svg" title="WhatsApp" alt="WhatsApp" width={24} height={24} className="ml-2" />
+                  {/* <Image src="/icons/whatsapp-fill.svg" title="WhatsApp" alt="WhatsApp" width={24} height={24} className="ml-2" /> */}
                 </a>
               </Button>
-              <Button asChild variant="secondary" className="text-md rounded-xl bg-gray-800 p-6 text-white hover:bg-gray-900">
-                <a href={ctaCall.link}>{ctaCall.text}</a>
-              </Button>
+              <ApplyDialogForm>
+                <Button variant="secondary" className="2xl:text-md rounded-xl bg-gray-800 p-6 text-sm text-white hover:bg-gray-900">
+                  Download Brochure
+                </Button>
+              </ApplyDialogForm>
             </div>
           </div>
           <div className="flex w-full items-center md:w-1/2">
@@ -76,6 +78,6 @@ export default function Hero({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
