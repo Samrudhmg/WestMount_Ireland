@@ -1,4 +1,3 @@
-import { ApplyDialogForm } from '@/components/main/apply-dialog-form';
 import { Carousel } from '@/components/main/custom-carousel';
 import { FeatureCard } from '@/components/main/feature-card';
 import { Button } from '@/components/ui/button';
@@ -66,7 +65,7 @@ const images = [
 export default function CoursesSection() {
   return (
     <section className="mx-auto bg-white">
-      <div className="container mx-auto max-w-5xl px-4 py-8 text-center">
+      <div className="container mx-auto max-w-5xl px-4 py-8 text-center 2xl:max-w-7xl">
         <h2 className="text-3xl font-bold leading-tight md:text-4xl">
           Why attend
           {' '}
@@ -96,9 +95,9 @@ export default function CoursesSection() {
             {features.map((feature, index) => (
               <FeatureCard key={index} icon={feature.icon} title={feature.title} description={feature.description} />
             ))}
-            <ApplyDialogForm>
-              <Button className="text-md w-full min-w-[150px] bg-iii-primary p-6 text-white hover:bg-iii-accent md:w-1/2">Download Brochure</Button>
-            </ApplyDialogForm>
+            <Button asChild className="text-md w-full min-w-[150px] rounded-xl bg-iii-primary p-6 text-white hover:bg-iii-accent md:w-1/2">
+              <a href="tel:+919745123466">Call now</a>
+            </Button>
           </div>
         </div>
       </div>

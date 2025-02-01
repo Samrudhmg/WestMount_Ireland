@@ -1,4 +1,3 @@
-import { ApplyDialogForm } from '@/components/main/apply-dialog-form';
 import { Carousel } from '@/components/main/custom-carousel';
 import { FeatureCard } from '@/components/main/feature-card';
 import { Button } from '@/components/ui/button';
@@ -89,9 +88,9 @@ export default function CoursesSectionCaFoundation() {
             {features.map((feature, index) => (
               <FeatureCard key={index} icon={feature.icon} title={feature.title} description={feature.description} />
             ))}
-            <ApplyDialogForm>
-              <Button className="text-md w-full min-w-[150px] bg-iii-primary p-6 text-white hover:bg-iii-accent md:w-1/2">Download Brochure</Button>
-            </ApplyDialogForm>
+            <Button asChild className="text-md w-full min-w-[150px] rounded-xl bg-iii-primary p-6 text-white hover:bg-iii-accent md:w-1/2">
+              <a href="tel:+919745123466">Call now</a>
+            </Button>
           </div>
         </div>
       </div>
