@@ -33,13 +33,13 @@ export default function WorkingProfessionalPage() {
     },
     carouselImages: [
       {
-        src: '/images/slider-1.jpg',
+        src: '/images/slider-1.png',
         alt: 'Winners of Triple i',
         caption: 'Learn From India\'s\nNo.1 Academic Experts',
         title: 'Learn From India No.1 Academic Experts',
       },
       {
-        src: '/images/slider-2.jpg',
+        src: '/images/slider-2.png',
         alt: 'Celebrations at Triple i',
         caption: 'Celebrations\n@ Triple i',
         title: 'Celebrations at Triple i Commerce Academy',
