@@ -27,10 +27,10 @@ export default function Home() {
       text: 'WhatsApp Now',
       link: 'https://wa.me/+919745123466',
     },
-    ctaCall: {
-      text: 'Call now',
-      link: 'tel:+919745123466',
-    },
+    // ctaCall: {
+    //   text: 'Call now',
+    //   link: 'tel:+919745123466',
+    // },
     carouselImages: [
       {
         src: '/images/slider-1.jpg',
