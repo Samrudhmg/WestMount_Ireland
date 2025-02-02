@@ -33,7 +33,7 @@ export function CareerCard({ title, subtitle, jobs, className, variant = 'second
         <ul className="mt-6 space-y-4">
           {jobs.map((job, index) => (
             <li key={index} className="flex items-center gap-2">
-              <img src={`/icons/${variant === 'primary' ? 'Star-white' : 'star'}.svg`} alt="star" title="star" className="size-4" />
+              <img src={`/icons/${variant === 'primary' ? 'Star-white' : 'Star'}.svg`} alt="star" title="star" className="size-4" />
               <span className="text-sm">{job}</span>
             </li>
           ))}
