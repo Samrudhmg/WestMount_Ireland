@@ -3,8 +3,7 @@ import Footer from '@/components/main/footer';
 import NavBar from '@/components/main/navbar';
 
 export const metadata: Metadata = {
-  title: 'Thank You | Triple ICA',
-  description: 'Thank you for your interest in Triple ICA services',
+  title: 'Thank You | Triple I',
 };
 
 interface LayoutProps {
