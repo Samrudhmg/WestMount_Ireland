@@ -7,11 +7,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { createLead } from '@/lib/enquire.form';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import { toast } from 'sonner';
-
-import ConfirmationCard from './confirmation-card';
 
 const COURSE_OPTIONS = [
   { value: 'ACCA', label: 'ACCA' },
@@ -32,27 +30,11 @@ const QUALIFICATION_OPTIONS = [
 
 export function ApplyForm() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const leadSource = searchParams.get('lead');
   const leadSubSource = searchParams.get('leadSubSource');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('isSubmitted') === 'true';
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    // Only access localStorage on the client side
-    const storedSubmission = localStorage.getItem('isSubmitted');
-    setIsSubmitted(storedSubmission === 'true');
-  }, []);
-
-  useEffect(() => {
-    if (typeof globalThis !== 'undefined') {
-      localStorage.setItem('isSubmitted', isSubmitted.toString());
-    }
-  }, [isSubmitted]);
+  const router = useRouter();
 
   const [errors, setErrors] = useState({
     name: '',
@@ -109,18 +91,14 @@ export function ApplyForm() {
     }
 
     try {
-      await createLead(values);
-      setIsSubmitted(true);
+      await createLead(values, pathname);
+      router.push('/thankyou');
     } catch (error) {
       console.error('Lead creation failed', error);
       toast.error('Lead creation failed');
       setIsSubmitting(false);
     }
   };
-
-  if (isSubmitted) {
-    return <ConfirmationCard />;
-  }
 
   return (
     <div className="w-full">
@@ -214,25 +192,10 @@ export function ApplyBottomForm() {
   const searchParams = useSearchParams();
   const leadSource = searchParams.get('lead');
   const leadSubSource = searchParams.get('leadSubSource');
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('isSubmitted') === 'true';
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const storedSubmission = localStorage.getItem('isSubmitted');
-    setIsSubmitted(storedSubmission === 'true');
-  }, []);
-
-  useEffect(() => {
-    if (typeof globalThis !== 'undefined') {
-      localStorage.setItem('isSubmitted', isSubmitted.toString());
-    }
-  }, [isSubmitted]);
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const pathname = usePathname();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -252,11 +215,10 @@ export function ApplyBottomForm() {
       interestedCourse: formData.get('interestedCourse') as CreateLeadDTO['interestedCourse'],
       latestQualification: formData.get('latestQualification') as CreateLeadDTO['latestQualification'],
       leadSource: leadSource ? (leadSource as CreateLeadDTO['leadSource']) : 'Google Ad',
-
       leadSubSource: leadSubSource ? (leadSubSource as CreateLeadDTO['leadSubSource']) : 'Search Ad',
     };
     try {
-      const isResponse = await createLead(values);
+      const isResponse = await createLead(values, pathname);
       if (isResponse) {
         setIsSubmitting(false);
         setName('');
@@ -265,6 +227,7 @@ export function ApplyBottomForm() {
         setInterestedCourse('CA');
         // setLatestQualification('Plus One');
         toast.success('Thank you! Our Sales Executive will be connecting with you soon :)');
+        router.push('/thankyou');
         setIsSubmitted(true);
       }
     } catch (error) {

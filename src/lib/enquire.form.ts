@@ -1,3 +1,5 @@
+import { routeFormConfig } from '../config/form-routes-config';
+
 export interface CreateLeadDTO {
   name: string;
   phone: string;
@@ -6,9 +8,11 @@ export interface CreateLeadDTO {
   latestQualification?: 'Plus One' | 'Plus Two' | 'UG' | 'PG' | 'Commerce Professional Student';
   leadSubSource: string | null;
   leadSource: string;
+  [key: string]: string | undefined | null;
 }
 
-export async function createLead(data: CreateLeadDTO) {
+export async function createLead(data: CreateLeadDTO, pathname: string) {
+  const routeFields = routeFormConfig[pathname] ?? {};
   try {
     const response = await fetch(
       'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjYwNTZmMDYzMzA0MzM1MjZjNTUzMDUxMzMi_pc',
@@ -26,6 +30,7 @@ export async function createLead(data: CreateLeadDTO) {
           leadSubSource: data.leadSubSource,
           leadSource: data.leadSource,
           registrationDate: new Date().toISOString().replace('T', ' ').split('.')[0],
+          ...routeFields,
         }),
       },
     );
