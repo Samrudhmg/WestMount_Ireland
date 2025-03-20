@@ -136,7 +136,7 @@ export function ApplyForm() {
         }
 
         return validationErrors;
-    };
+    }
 
     // eslint-disable-next-line unicorn/prevent-abbreviations
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
