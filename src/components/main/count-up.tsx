@@ -3,18 +3,8 @@
 import { useInView, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
-const getDynamicFromValue = (to: number): number => {
-  const numberLength = Math.abs(to).toString().length;
-  if (numberLength === 3) {
-    return 0;
-  }
-  if (numberLength === 4) {
-    return 1000;
-  }
-  if (numberLength > 4) {
-    return to - 1000;
-  }
-  return 0;
+const getDynamicFromValue = (_to: number): number => {
+  return 0; // Ensuring it always starts from 0
 };
 
 interface CountUpProps {
@@ -28,6 +18,7 @@ interface CountUpProps {
   separator?: string;
   onStart?: () => void;
   onEnd?: () => void;
+  index?: number;
 }
 
 export default function CountUp({
@@ -41,6 +32,7 @@ export default function CountUp({
   separator = '',
   onStart,
   onEnd,
+  index,
 }: Readonly<CountUpProps>) {
   const actualFrom = from === 'auto' ? getDynamicFromValue(to) : from;
   const ref = useRef<HTMLSpanElement>(null);
@@ -58,7 +50,9 @@ export default function CountUp({
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.textContent = String(direction === 'down' ? to : actualFrom);
+      ref.current.textContent = String(
+        direction === 'down' ? to : actualFrom,
+      );
     }
   }, [actualFrom, to, direction]);
 
@@ -82,25 +76,33 @@ export default function CountUp({
         clearTimeout(durationTimeoutId);
       };
     }
-  }, [isInView, startWhen, motionValue, direction, actualFrom, to, delay, onStart, onEnd, duration]);
+  }, [
+    isInView,
+    startWhen,
+    motionValue,
+    direction,
+    actualFrom,
+    to,
+    delay,
+    onStart,
+    onEnd,
+    duration,
+  ]);
 
   useEffect(() => {
     const unsubscribe = springValue.on('change', (latest: number) => {
       if (ref.current) {
-        const options = {
-          useGrouping: !!separator,
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0,
-        };
+        const formattedNumber
+                    = index === 2
+                      ? `${Math.floor(latest)}.9` // Append .9 if index is 2
+                      : Math.floor(latest).toLocaleString('en-US'); // Keep whole numbers for other indexes
 
-        const formattedNumber = Intl.NumberFormat('en-US', options).format(Math.round(latest));
-
-        ref.current.textContent = separator ? formattedNumber.replace(/,/g, separator) : formattedNumber;
+        ref.current.textContent = formattedNumber;
       }
     });
 
     return () => unsubscribe();
-  }, [springValue, separator]);
+  }, [springValue, separator, index]);
 
   return <span className={className} ref={ref} />;
 }

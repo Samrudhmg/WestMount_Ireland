@@ -49,12 +49,19 @@ function Price({ originalPrice, discountedPrice }: Readonly<PriceProps>) {
   );
 }
 
-export function CoursePromo({ batchName, benefits, originalPrice, discountedPrice }: Readonly<CoursePromoProps>) {
+export function CoursePromo({
+  batchName,
+  benefits,
+  originalPrice,
+  discountedPrice,
+}: Readonly<CoursePromoProps>) {
   return (
-    <div className="flex min-h-[600px] flex-col items-center justify-center bg-iii-primary px-4 py-12 font-inter text-white">
+    <div className="bg-iii-primary flex min-h-[600px] flex-col items-center justify-center px-4 py-12 font-inter text-white">
       <div className="w-full space-y-8 md:max-w-2xl">
         <div className="text-center">
-          <h3 className="mb-2 text-5xl font-bold">Time Is Running Out!</h3>
+          <h3 className="mb-2 text-5xl font-bold">
+            Time Is Running Out!
+          </h3>
           <p className="text-lg">
             {batchName}
             {' '}
@@ -63,7 +70,6 @@ export function CoursePromo({ batchName, benefits, originalPrice, discountedPric
         </div>
 
         <div className="relative mx-auto max-w-md font-sans">
-
           <div className="absolute inset-0 translate-x-[3px] translate-y-[2px] rounded-2xl bg-[#a33f1e]"></div>
           <div className="absolute inset-0 translate-x-[5px] translate-y-[4px] rounded-2xl  bg-[#ba3104]"></div>
           <div className="absolute inset-0 translate-x-[7px] translate-y-[6px] rounded-2xl bg-[#c4380a]/50"></div>
@@ -72,14 +78,26 @@ export function CoursePromo({ batchName, benefits, originalPrice, discountedPric
           {/* <div className="relative z-10 h-full rounded-lg border-2 border-gray-100 bg-white p-6 shadow-sm"> */}
 
           <Card className="relative z-10 mx-auto max-w-md border-none bg-zinc-900 p-6 py-14 text-white">
-            <h3 className="mb-6 font-inter text-4xl font-bold">Course Benefits</h3>
+            <h3 className="mb-6 font-inter text-4xl font-bold">
+              Course Benefits
+            </h3>
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3">
+                <div
+                  key={index}
+                  className="flex items-start gap-3"
+                >
                   <span className="text-[#DC4216]">
-                    <img src="/icons/Star.svg" title="star" className="w-6" alt="star" />
+                    <img
+                      src="/icons/Star.svg"
+                      title="star"
+                      className="w-6"
+                      alt="star"
+                    />
                   </span>
-                  <p className="flex-1 font-inter font-medium text-gray-100">{benefit.text}</p>
+                  <p className="flex-1 font-inter font-medium text-gray-100">
+                    {benefit.text}
+                  </p>
                 </div>
               ))}
             </div>
@@ -92,12 +110,17 @@ export function CoursePromo({ batchName, benefits, originalPrice, discountedPric
         </div>
 
         {/* Pricing */}
-        <Price originalPrice={originalPrice} discountedPrice={discountedPrice} />
+        <Price
+          originalPrice={originalPrice}
+          discountedPrice={discountedPrice}
+        />
 
         {/* CTA Button */}
         <div className="text-center">
           <ApplyDialogForm>
-            <Button className="rounded-xl bg-iii-black px-8 py-6 text-lg font-semibold text-white hover:bg-zinc-800">Join Now</Button>
+            <Button className="bg-iii-black rounded-xl px-8 py-6 text-lg font-semibold text-white hover:bg-zinc-800">
+              Join Now
+            </Button>
           </ApplyDialogForm>
         </div>
       </div>

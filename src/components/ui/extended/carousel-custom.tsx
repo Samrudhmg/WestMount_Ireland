@@ -1,107 +1,94 @@
-"use client"
+"use client";
 
-import React, { useState, useEffect, useCallback } from "react"
-import Image from "next/image"
-import { cn } from "@/lib/utils"
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
-interface CarouselProps {
-  images: {
-    src: string
-    alt: string
-    caption?: string
-    title?: string
-  }[]
-  autoPlayInterval?: number
-  className?: string
-  captionPosition?: {
-    top?: string
-    bottom?: string
-    left?: string
-    right?: string
-  }
-  captionClassName?: string
-}
+const images = [
+    "/images/img-90.png",
+    "/images/img-91.png",
+    "/images/img-92.png",
+    "/images/img-94.png",
+    "/images/img-95.png",
+    "/images/img-96.png",
+    "/images/img-92.png",
+    "/images/img-94.png",
+    "/images/img-95.png",
+    "/images/img-96.png",
+];
 
-export function CustomCarousel({
-  images,
-  autoPlayInterval = 5000,
-  className,
-  captionPosition = { top: "15%" },
-  captionClassName = "whitespace-pre-line text-center text-sm font-bold text-white md:text-lg lg:text-3xl xl:text-5xl",
-}: Readonly<CarouselProps>) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export default function CustomCarousel() {
+    const [currentSlide, setCurrentSlide] = useState(2);
+    const [screenWidth, setScreenWidth] = useState(0);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1))
-  }, [images.length])
+    useEffect(() => {
+        setScreenWidth(window.innerWidth);
+        const handleResize = () => setScreenWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
-  useEffect(() => {
-    const interval = setInterval(nextSlide, autoPlayInterval)
-    return () => clearInterval(interval)
-  }, [nextSlide, autoPlayInterval])
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % 5);
+        }, 2000);
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index)
-  }
+        return () => clearInterval(timer);
+    }, []);
 
-  return (
-    <div className={cn("relative min-h-80 w-full", className)}> 
-    <div className="h-full w-full overflow-hidden md:py-40 2xl:py-60"> 
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className={cn(
-            "absolute inset-0 h-full w-full transition-opacity duration-500", 
-            index === currentIndex ? "opacity-100" : "opacity-0",
-          )}
-        >
-          <div className="relative h-full w-full"> 
-          <Image
-        src={image.src}
-        alt={image.alt}
-        title={image.title}
-        width={1920}
-        height={1080}
-        priority={index === 0}
-        loading={index === 0 ? "eager" : "lazy"}
-        className="h-full w-full rounded-tl-[100px] object-cover object-bottom"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
-      />
-          </div>
-          {image.caption && (
-              <div
-                className="absolute w-full"
-                style={{
-                  top: captionPosition.top,
-                  bottom: captionPosition.bottom,
-                  left: captionPosition.left,
-                  right: captionPosition.right,
-                }}
-              >
-                <h5
-                className={cn(captionClassName, "whitespace-pre-wrap text-center")}
-                 >{image.caption}</h5>
-              </div>
-            )}
+    // Dynamic Scaling based on screen width
+    const getScaleAndDimensions = (position: number) => {
+        if (position === 4)
+            return "scale-100 w-[200px] h-[400px] md:w-[230px] md:h-[380px] lg:w-[260px] lg:h-[450px] ";
+        if (position === 3 || position === 5)
+            return "scale-95 w-[140px] h-[380px] md:w-[150px] md:h-[350px] lg:w-[140px] lg:h-[420px]  ";
+        if (position === 2 || position === 6)
+            return "scale-90 w-[115px] h-[360px] md:w-[120px] md:h-[320px] lg:w-[110px] lg:h-[400px] ";
+        if (position === 1 || position === 7)
+            return "scale-85 w-[100px] h-[340px] md:w-[100px] md:h-[300px] lg:w-[90px] lg:h-[370px]  ";
+        return "scale-80 w-[50px] h-[300px] md:w-[40px] md:h-[280px] ";
+    };
+
+    return (
+        <div className="relative   h-[400px] md:h-[400px] sm:h-[350px] lg:h-[500px] w-full overflow-hidden">
+            <div className="absolute w-full h-full flex items-center justify-center">
+                {images.map((_, index) => {
+                    const adjustedIndex = (index - currentSlide + 9) % 9;
+
+                    // **New: Dynamic offset for better animation**
+                    const baseOffset =
+                        screenWidth >= 1024 ? 90 : screenWidth >= 768 ? 60 : 40; // Adjusted for mobile
+                    const offset = (adjustedIndex - 4) * baseOffset;
+
+                    return (
+                        <div
+                            key={index}
+                            className={`absolute rounded-xl overflow-hidden transition-all duration-700 ease-in-out ${getScaleAndDimensions(adjustedIndex)}`}
+                            style={{
+                                transform: `translateX(${offset}%)`,
+                                zIndex: 10 - Math.abs(adjustedIndex - 4),
+                            }}
+                        >
+                            {/* Overlay Effect */}
+                            <div
+                                className={`absolute inset-0 bg-black ${
+                                    adjustedIndex === 4
+                                        ? "opacity-0"
+                                        : "opacity-50"
+                                } transition-opacity duration-500 z-10`}
+                            />
+
+                            {/* Image */}
+                            <Image
+                                src={images[index]}
+                                alt={`Slide ${index + 1}`}
+                                fill
+                                className="object-cover"
+                                priority={adjustedIndex === 4}
+                            />
+                        </div>
+                    );
+                })}
+            </div>
         </div>
-      ))}
-    </div>
-    <div className="absolute inset-x-0 top-4 z-10">
-      <div className="flex justify-center gap-2">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={cn(
-              "h-2 rounded-full transition-all duration-300",
-              index === currentIndex ? "bg-white w-6" : "bg-white/50 hover:bg-white/75 w-2",
-            )}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  </div>
-  )
+    );
 }
-

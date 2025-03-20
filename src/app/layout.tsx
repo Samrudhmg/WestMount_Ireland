@@ -5,11 +5,12 @@ import { Toaster } from '@/components/ui/toaster';
 import { NextIntlProvider } from '@/providers/next-intl-provider';
 import { ReactQueryProvider } from '@/providers/react-query-provider';
 import Script from 'next/script';
+import { Suspense } from 'react';
 import { inter, sourceSerif4 } from './fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Triple i',
+  title: 'West-Mount',
   metadataBase: new URL(process.env.NEXT_PUBLIC_FRONTEND_URL ?? ''),
   icons: {
     icon: '/icons/favicon.ico',
@@ -46,7 +47,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${sourceSerif4.variable} min-h-screen font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${sourceSerif4.variable} min-h-screen font-sans antialiased`}
+      >
         <noscript>
           <iframe
             title="Google Tag Manager"
@@ -66,7 +69,10 @@ export default function RootLayout({
             timeZone="UTC"
           >
             <AlertDialogProvider>
-              {children}
+              {/* ✅ Wrap the children in Suspense to avoid the useSearchParams() error */}
+              <Suspense fallback={<p>Loading...</p>}>
+                {children}
+              </Suspense>
             </AlertDialogProvider>
           </NextIntlProvider>
           <Toaster />

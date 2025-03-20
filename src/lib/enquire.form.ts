@@ -3,7 +3,7 @@ import { routeFormConfig } from '../config/form-routes-config';
 export interface CreateLeadDTO {
   name: string;
   phone: string;
-  email: string;
+  dialCode?: string;
   interestedCourse: 'ACCA' | 'CA' | 'CMA IND' | 'CMA US' | 'CS' | 'Commerce Entrance';
   latestQualification?: 'Plus One' | 'Plus Two' | 'UG' | 'PG' | 'Commerce Professional Student';
   leadSubSource: string | null;
@@ -22,11 +22,11 @@ export async function createLead(data: CreateLeadDTO, pathname: string) {
         //     'Content-Type': 'application/json',
         // },
         body: JSON.stringify({
-          phoneNumber: data.phone,
+          phoneNumber: data.dialCode ? `${data.dialCode}${data.phone}` : data.phone, // Send dial code if available
+          dialCode: data.dialCode,
           name: data.name,
           latestQualification: data.latestQualification,
           interestedCourse: data.interestedCourse,
-          email: data.email,
           leadSubSource: data.leadSubSource,
           leadSource: data.leadSource,
           registrationDate: new Date().toISOString().replace('T', ' ').split('.')[0],

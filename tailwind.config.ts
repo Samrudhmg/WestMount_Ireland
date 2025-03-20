@@ -18,12 +18,12 @@ export default {
       colors: {
         'background': 'hsl(var(--background))',
         'foreground': 'hsl(var(--foreground))',
-        'iii-primary': '#de4a19',
-        'iii-contrast': '#DA380C',
-        'iii-accent': '#f15b29',
-        'iii-black': '#1d1d1d',
-        'iii-secondary': '#545454',
-        'iii-secondary-muted': '#979797',
+        'West-primary': '#de4a19',
+        'West-contrast': '#006969',
+        'West-accent': '#006978',
+        'West-black': '#1d1d1d',
+        'West-secondary': '#545454',
+        'West-secondary-muted': '#979797',
         'card': {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',

@@ -26,13 +26,13 @@ export function SalaryRangeCard({
     >
       <CardHeader className="">
         <CardTitle className="flex items-center gap-2 text-base font-medium">
-          <IndianRupee className="size-5 text-iii-primary md:mx-5" />
+          <IndianRupee className="text-iii-primary size-5 md:mx-5" />
           The Potential Salary is Limitless
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="text-center">
-          <h3 className="font-semibold text-iii-primary">
+          <h3 className="text-iii-primary font-semibold">
             High Initial
             {' '}
             <br />
@@ -50,7 +50,7 @@ export function SalaryRangeCard({
               </span>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-md font-bold md:text-4xl">
+              <span className="text-lg font-bold md:text-4xl">
                 ₹
                 {medianSalary}
               </span>

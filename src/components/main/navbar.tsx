@@ -1,39 +1,101 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+"use client";
+import { Menu } from "lucide-react";
+import { useState } from "react";
 
-import { Button } from '../ui/button';
-import { ApplyDialogForm } from './apply-dialog-form';
+export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
 
-interface NavBarProps {
-  navItems?: {
-    name: string;
-    href: string;
-  }[];
-}
+    // Function to handle smooth scrolling
+    const handleScroll = (id: string) => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+            setIsOpen(false); // Close mobile menu after clicking
+        }
+    };
 
-export default function NavBar({ navItems }: Readonly<NavBarProps>) {
-  return (
-    <nav className="bg-white">
-      <div className="mx-auto flex items-center justify-between p-4 md:container lg:w-8/12 lg:justify-evenly lg:px-8">
-        <div className="flex lg:flex-1">
-          <Link className="flex items-center text-xl font-semibold" href="/">
-            <Image alt="triple i logo" title="Triple i Commerce Academy" width={100} height={100} src="/icons/triple-i-logo.svg" />
-          </Link>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navItems?.map(item => (
-            <Link className="font-medium leading-6" href={item.href} key={item.name}>
-              {item.name}
-            </Link>
-          ))}
-        </div>
-        <div className="lg:flex lg:flex-1 lg:justify-end">
-          <ApplyDialogForm>
-            <Button className="text-md rounder bg-iii-contrast p-5 hover:bg-iii-primary">Signup</Button>
-          </ApplyDialogForm>
-        </div>
-      </div>
-    </nav>
-  );
+    return (
+        <header className="sticky top-0 z-50 w-full border-b bg-background">
+            <div className="container mx-auto flex h-16 items-center justify-between px-4 md:justify-around">
+                {/* Logo */}
+                <button
+                    onClick={() => handleScroll("hero")}
+                    className="flex items-center space-x-2"
+                >
+                    <img
+                        src="/images/West-Mount-Logo.png"
+                        alt="West Mount Logo"
+                        className="h-14 object-contain lg:h-12"
+                    />
+                </button>
+
+                {/* Desktop Navigation */}
+                <nav className="hidden items-center space-x-6 md:flex">
+                    <button
+                        onClick={() => handleScroll("hero")}
+                        className="text-sm font-medium transition-colors hover:text-primary"
+                    >
+                        Home
+                    </button>
+                    <button
+                        onClick={() => handleScroll("about")}
+                        className="text-sm font-medium transition-colors hover:text-primary"
+                    >
+                        About
+                    </button>
+                    <button
+                        onClick={() => handleScroll("contact")}
+                        className="text-sm font-medium transition-colors hover:text-primary"
+                    >
+                        Contact
+                    </button>
+                </nav>
+
+                {/* Get Started Button (Desktop) */}
+                <div className="hidden md:block">
+                    <button className="rounded-md bg-[#006D77] px-4 py-2 text-white hover:bg-[#006D77]/90">
+                        Get Started
+                    </button>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="p-2 md:hidden"
+                >
+                    <Menu className="size-7" />
+                    <span className="sr-only">Toggle menu</span>
+                </button>
+
+                {/* Mobile Navigation */}
+                {isOpen && (
+                    <div className="animate-slide-in absolute inset-x-0 top-16 border-b bg-white md:hidden">
+                        <nav className="flex flex-col space-y-4 p-4">
+                            <button
+                                onClick={() => handleScroll("hero")}
+                                className="text-sm font-medium transition-colors hover:text-primary"
+                            >
+                                Home
+                            </button>
+                            <button
+                                onClick={() => handleScroll("about")}
+                                className="text-sm font-medium transition-colors hover:text-primary"
+                            >
+                                About
+                            </button>
+                            <button
+                                onClick={() => handleScroll("contact")}
+                                className="text-sm font-medium transition-colors hover:text-primary"
+                            >
+                                Contact
+                            </button>
+                            <button className="w-full rounded-md bg-[#006D77] px-4 py-2 text-white hover:bg-[#006D77]/90">
+                                Get Started
+                            </button>
+                        </nav>
+                    </div>
+                )}
+            </div>
+        </header>
+    );
 }

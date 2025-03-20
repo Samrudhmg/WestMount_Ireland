@@ -14,7 +14,11 @@ interface QuestionsProps {
   ctaButtons: CTAButton[];
 }
 
-export default function Questions({ title, subtitle, ctaButtons }: Readonly<QuestionsProps>) {
+export default function Questions({
+  title,
+  subtitle,
+  ctaButtons,
+}: Readonly<QuestionsProps>) {
   return (
     <div className="bg-iii-primary py-16 text-white">
       <div className="container mx-auto px-4 text-center">
@@ -31,7 +35,12 @@ export default function Questions({ title, subtitle, ctaButtons }: Readonly<Ques
               )}
             >
               {button.text}
-              <img src={button.icon || '/placeholder.svg'} alt={button.alt} title={button.text} className="ml-2 size-6" />
+              <img
+                src={button.icon || '/placeholder.svg'}
+                alt={button.alt}
+                title={button.text}
+                className="ml-2 size-6"
+              />
             </a>
           ))}
         </div>

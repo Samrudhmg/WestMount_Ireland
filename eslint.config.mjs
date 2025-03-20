@@ -105,17 +105,12 @@ export default antfu(
     },
   },
   {
-    files: [
-      '**/*.test.ts?(x)',
-    ],
+    files: ['**/*.test.ts?(x)'],
     ...testingLibrary.configs['flat/react'],
     ...jestDom.configs['flat/recommended'],
   },
   {
-    files: [
-      '**/*.spec.ts',
-      '**/*.e2e.ts',
-    ],
+    files: ['**/*.spec.ts', '**/*.e2e.ts'],
     ...playwright.configs['flat/recommended'],
   },
   {
@@ -131,17 +126,20 @@ export default antfu(
       'test/padding-around-all': 'error', // Add padding in test files
       'test/prefer-lowercase-title': 'off', // Allow using uppercase titles in test titles
 
-      'unicorn/prevent-abbreviations': ['error', {
-        allowList: {
-          e2e: true,
-          Env: true,
+      'unicorn/prevent-abbreviations': [
+        'error',
+        {
+          allowList: {
+            e2e: true,
+            Env: true,
+          },
+          replacements: {
+            props: false,
+            ref: false,
+            params: false,
+          },
         },
-        replacements: {
-          props: false,
-          ref: false,
-          params: false,
-        },
-      }],
+      ],
     },
   },
   // JavaScript-specific overrides

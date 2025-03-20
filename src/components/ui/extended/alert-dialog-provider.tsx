@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import * as React from "react";
 import { Input } from "@/components/ui/input";
@@ -14,7 +14,11 @@ import {
 import StateButton from "@/components/ui/extended/state-button";
 
 export const AlertDialogContext = React.createContext<
-    <T extends AlertAction>(params: T) => Promise<T["type"] extends "alert" | "confirm" ? boolean : null | string>
+    <T extends AlertAction>(
+        params: T,
+    ) => Promise<
+        T["type"] extends "alert" | "confirm" ? boolean : null | string
+    >
 >(() => null!);
 
 export type AlertAction =
@@ -37,7 +41,10 @@ export type AlertAction =
           danger?: boolean;
           defaultValue?: string;
           onAction?: () => Promise<void>;
-          inputProps?: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+          inputProps?: React.DetailedHTMLProps<
+              React.InputHTMLAttributes<HTMLInputElement>,
+              HTMLInputElement
+          >;
       }
     | { type: "close" };
 
@@ -52,11 +59,17 @@ interface AlertDialogState {
     onAction?: () => Promise<void>;
     defaultValue?: string;
     inputProps?: React.PropsWithoutRef<
-        React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+        React.DetailedHTMLProps<
+            React.InputHTMLAttributes<HTMLInputElement>,
+            HTMLInputElement
+        >
     >;
 }
 
-export function alertDialogReducer(state: AlertDialogState, action: AlertAction): AlertDialogState {
+export function alertDialogReducer(
+    state: AlertDialogState,
+    action: AlertAction,
+): AlertDialogState {
     switch (action.type) {
         case "close":
             return { ...state, open: false };
@@ -67,15 +80,22 @@ export function alertDialogReducer(state: AlertDialogState, action: AlertAction)
                 ...state,
                 open: true,
                 ...action,
-                cancelButton: action.cancelButton || (action.type === "alert" ? "Okay" : "Cancel"),
-                actionButton: ("actionButton" in action && action.actionButton) || "Okay",
+                cancelButton:
+                    action.cancelButton ||
+                    (action.type === "alert" ? "Okay" : "Cancel"),
+                actionButton:
+                    ("actionButton" in action && action.actionButton) || "Okay",
             };
         default:
             return state;
     }
 }
 
-export function AlertDialogProvider({ children }: { children: React.ReactNode }) {
+export function AlertDialogProvider({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     const [state, dispatch] = React.useReducer(alertDialogReducer, {
         open: false,
         title: "",
@@ -113,13 +133,18 @@ export function AlertDialogProvider({ children }: { children: React.ReactNode })
         }
     }
 
-    const dialog = React.useCallback(async <T extends AlertAction>(params: T) => {
-        dispatch(params);
+    const dialog = React.useCallback(
+        async <T extends AlertAction>(params: T) => {
+            dispatch(params);
 
-        return new Promise<T["type"] extends "alert" | "confirm" ? boolean : null | string>((resolve) => {
-            resolveRef.current = resolve;
-        });
-    }, []);
+            return new Promise<
+                T["type"] extends "alert" | "confirm" ? boolean : null | string
+            >((resolve) => {
+                resolveRef.current = resolve;
+            });
+        },
+        [],
+    );
 
     return (
         <AlertDialogContext.Provider value={dialog}>
@@ -140,20 +165,34 @@ export function AlertDialogProvider({ children }: { children: React.ReactNode })
                     >
                         <AlertDialogHeader>
                             <AlertDialogTitle>{state.title}</AlertDialogTitle>
-                            {state.body ? <AlertDialogDescription>{state.body}</AlertDialogDescription> : null}
+                            {state.body ? (
+                                <AlertDialogDescription>
+                                    {state.body}
+                                </AlertDialogDescription>
+                            ) : null}
                         </AlertDialogHeader>
                         {state.type === "prompt" && (
-                            <Input name="prompt" defaultValue={state.defaultValue} {...state.inputProps} />
+                            <Input
+                                name="prompt"
+                                defaultValue={state.defaultValue}
+                                {...state.inputProps}
+                            />
                         )}
                         <AlertDialogFooter>
-                            <Button variant={"outline"} type="button" onClick={close}>
+                            <Button
+                                variant={"outline"}
+                                type="button"
+                                onClick={close}
+                            >
                                 {state.cancelButton}
                             </Button>
                             {state.type === "alert" ? null : (
                                 <StateButton
                                     isLoading={isLoading}
                                     isDisabled={isLoading}
-                                    variant={state.danger ? "destructive" : "default"}
+                                    variant={
+                                        state.danger ? "destructive" : "default"
+                                    }
                                     type="submit"
                                 >
                                     {state.actionButton}
@@ -167,7 +206,9 @@ export function AlertDialogProvider({ children }: { children: React.ReactNode })
     );
 }
 
-type Params<T extends "alert" | "confirm" | "prompt"> = Omit<Extract<AlertAction, { type: T }>, "type"> | string;
+type Params<T extends "alert" | "confirm" | "prompt"> =
+    | Omit<Extract<AlertAction, { type: T }>, "type">
+    | string;
 
 export function useConfirm() {
     const dialog = React.useContext(AlertDialogContext);

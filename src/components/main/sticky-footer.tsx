@@ -1,6 +1,12 @@
 'use client';
 
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
 import { Phone } from 'lucide-react';
 
 import Link from 'next/link';
@@ -9,6 +15,14 @@ import { VisuallyHidden } from '../ui/extended/visually-hidden';
 import { ApplyBottomForm, ApplyForm } from './apply-form';
 
 // import { ApplyBottomForm, ApplyForm } from './apply-form';
+
+export function StickyFooterWrapper() {
+  return (
+    <Suspense fallback={<p>Loading footer...</p>}>
+      <StickyFooter />
+    </Suspense>
+  );
+}
 
 export function StickyFooter() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -24,16 +38,26 @@ export function StickyFooter() {
       <div className="fixed inset-x-0 bottom-0 z-50  bg-white md:hidden">
         <div className="grid grid-cols-3 gap-px bg-gray-200">
           <Link
-            href="https://wa.me/919020123466"
+            href="https://wa.me/919072123477"
             className="flex flex-col items-center justify-center bg-green-500 p-3 text-xs font-medium text-white"
           >
-            <img src="/icons/whatsapp.svg" title="whatsapp" alt="whatsapp" className="size-6" />
+            <img
+              src="/icons/whatsapp.svg"
+              title="whatsapp"
+              alt="whatsapp"
+              className="size-6"
+            />
             Whatsapp Us
           </Link>
           <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
             <DrawerTrigger asChild>
-              <button className="flex w-full flex-col items-center justify-center bg-iii-primary p-3 text-xs font-medium text-white">
-                <img src="/icons/mobile-ico2.svg" title="pen" alt="pen" className="size-6" />
+              <button className="bg-iii-primary flex w-full flex-col items-center justify-center p-3 text-xs font-medium text-white">
+                <img
+                  src="/icons/mobile-ico2.svg"
+                  title="pen"
+                  alt="pen"
+                  className="size-6"
+                />
                 Apply Now
               </button>
             </DrawerTrigger>
@@ -49,19 +73,26 @@ export function StickyFooter() {
             </DrawerContent>
           </Drawer>
           <Link
-            href="tel:+919020123466"
+            href="tel:+919072123477"
             className="flex flex-col items-center justify-center bg-[#0088cc] p-3 text-xs font-medium text-white"
           >
-            <img src="/icons/phone.svg" alt="phone" title="phone" className="size-6" />
+            <img
+              src="/icons/phone.svg"
+              alt="phone"
+              title="phone"
+              className="size-6"
+            />
             Call Us
           </Link>
         </div>
       </div>
       <div className="fixed inset-x-0 bottom-0 z-50 hidden bg-transparent md:block">
-        <div className={`fixed ${isSubmitted ? 'bottom-4' : 'bottom-24'} right-6 z-50 flex flex-col gap-4`}>
+        <div
+          className={`fixed ${isSubmitted ? 'bottom-4' : 'bottom-24'} right-6 z-50 flex flex-col gap-4`}
+        >
           {/* WhatsApp Button */}
           <Link
-            href="https://wa.me/919020123466"
+            href="https://wa.me/919072123477"
             className="flex size-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110"
             aria-label="Contact us on WhatsApp"
           >
@@ -77,7 +108,7 @@ export function StickyFooter() {
 
           {/* Phone Button */}
           <Link
-            href="tel:+919020123466"
+            href="tel:+919072123477"
             className="flex size-12 items-center justify-center rounded-full bg-[#3B82F6] text-white shadow-lg transition-transform hover:scale-110"
             aria-label="Call us"
           >

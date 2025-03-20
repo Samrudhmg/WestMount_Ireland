@@ -32,8 +32,7 @@ export function ColorProgress({
 
           {/* 3-color bar */}
           <Card className="flex h-8 overflow-hidden rounded-none border-none shadow-none">
-            <Card className="w-1/3 rounded-none border-none bg-[#fcbba5] shadow-none">
-            </Card>
+            <Card className="w-1/3 rounded-none border-none bg-[#fcbba5] shadow-none"></Card>
             <Card className="w-1/3 rounded-none border-none bg-[#f76231] shadow-none" />
             <Card className="w-1/3 rounded-none border-none bg-[#9c2902] shadow-none" />
           </Card>
