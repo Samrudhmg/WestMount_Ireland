@@ -40,4 +40,4 @@ export function ExamMonthCards({ part, dates, className }: Readonly<ScheduleCard
       </CardContent>
     </Card>
   );
-}
+};
