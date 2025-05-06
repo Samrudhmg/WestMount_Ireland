@@ -48,7 +48,7 @@ const PartnerLogos = () => {
 
     return (
         <div className="mt-10 flex flex-col gap-3">
-            <h1 className="text-center text-xl">Hiring partners</h1>
+            <h1 className="text-center text-xl 2xl:text-2xl">Hiring partners</h1>
             <div className="flex flex-wrap items-center justify-center gap-8 opacity-70">
                 {partners.map((partner) => (
                     <div
