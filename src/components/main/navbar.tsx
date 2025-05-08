@@ -64,7 +64,7 @@ export default function Navbar() {
                     className="p-2 md:hidden"
                 >
                     <Menu className="size-7" />
-                    <span className="sr-only">Toggle menu</span>
+                    <span className="sr-only">Toggle Menu</span>
                 </button>
 
                 {/* Mobile Navigation */}
