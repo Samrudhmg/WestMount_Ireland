@@ -65,4 +65,4 @@ export default function Stories({ title, subtitle, videoUrl }: Readonly<StoriesP
       </div>
     </div>
   );
-}
+};
