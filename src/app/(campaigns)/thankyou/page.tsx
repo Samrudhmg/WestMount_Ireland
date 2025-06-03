@@ -64,7 +64,7 @@ export default function ThankYouPage() {
 
                         <h1 className="mb-3 text-2xl font-bold">
                             <span className="text-teal-500">Thank you,</span>{" "}
-                            for submitting
+                            for submitting!
                         </h1>
                         <p className="mb-4 text-gray-600">
                             Our team will connect with you soon!
