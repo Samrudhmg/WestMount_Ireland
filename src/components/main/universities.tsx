@@ -125,7 +125,7 @@ export default function Universities() {
           variant="outline"
           className="h-12 bg-white px-5 text-teal-700 "
         >
-          Contact us
+          Contact Us
         </Button>
         <ApplyDialogForm>
           <Button
