@@ -20,7 +20,7 @@ const successStories: SuccessStory[] = [
         name: "Fathima Neha P.V",
         qualification: "CA Inter both group qualified",
         testimonial:
-            "l wasn't very confident that I would pass on the first attempt, but thanks to the amazing faculty at triple i and the study material they provided, I was able to clear the exam on the first attempt. All credit goes to the amazing faculty at Triple l.",
+            "l wasn't very confident that I would pass on the first attempt but thanks to the amazing faculty at triple i and the study material they provided, I was able to clear the exam on the first attempt. All credit goes to the amazing faculty at Triple l.",
         image: "/images/Frame1.png",
     },
     {
