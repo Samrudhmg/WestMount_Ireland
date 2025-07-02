@@ -24,7 +24,7 @@ export default function Hero() {
           {/* Content Column - Below the slider on mobile, on the left for desktop */}
           <div className="lg: order-2 space-y-6 sm:space-y-10 lg:order-1">
             <div className="space-y-4">
-              {/* Responsive Flag*/}
+              {/* Responsive Flag */}
               <div className="flex flex-row-reverse items-center justify-center gap-5 lg:flex-col  lg:items-start lg:justify-normal">
                 <div className=" size-10 rounded-full sm:size-16 lg:size-14">
                   <img
