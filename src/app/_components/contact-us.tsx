@@ -27,7 +27,7 @@ export default function ContactForm() {
               href="mailto:westmountoverseas@gmail.com"
               className="font-semibold text-teal-900"
             >
-              westmountoverseas@gmail.com
+              westmountoverseas@gmail.com.
             </a>
           </div>
           <div className="flex items-center gap-2 text-gray-600">
