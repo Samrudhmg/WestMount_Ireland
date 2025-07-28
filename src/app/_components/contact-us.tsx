@@ -17,7 +17,7 @@ export default function ContactForm() {
           <p className="text-lg text-gray-600">
             Let's make your dream of studying abroad a reality.
             <br />
-            Contact us today
+            Contact us today!
           </p>
         </div>
         <div className="space-y-5 text-lg">
